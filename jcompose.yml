@@ -1,0 +1,17 @@
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8081:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
+
+#docker exec -i e067794c4f1a bash -c "cat /var/jenkins_home/secrets/initialAdminPassword"  
+#comando dentro de um container do jenkins para saber a senha master padrão gerada pela própria aplicação.
+#e067794c4f1a é o ID do container, que muda a cada deploy de stack.
